@@ -16,9 +16,9 @@ import { Autoplay, Pagination } from 'swiper/modules';
 
 // รายการรูปภาพจาก public/Image_Swiper
 const images = [
-  '/Banner/banner1.png',
-  '/Banner/banner1.png',
-  '/Banner/banner1.png',
+  '/Banner/bandder1.jpg',
+  '/Banner/bandder2.jpg',
+  '/Banner/bandder3.jpg',
 ];
 
 const SwiperBanner = () => {
