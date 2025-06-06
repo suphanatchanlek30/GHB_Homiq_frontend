@@ -11,8 +11,10 @@ export default function Home() {
 
       <HeaderLogo />
 
+      {/* Banner */}
       <BannerCard />
 
+      {/* ประกาศ */}
       <InfoCard
         title="ประกาศ"
         subtitle="ประกาศสำคัญ"
