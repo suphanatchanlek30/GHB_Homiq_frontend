@@ -6,14 +6,13 @@ import MobileNavbar from "../components/MobileNavbar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f8f6f9] pb-20">
-      {/* Header Logo */}
+    <div className="relative min-h-screen pb-20 overflow-hidden">
+      <div className="absolute inset-0 -z-10 w-full h-full bg-cover bg-no-repeat" style={{ backgroundImage: 'url(/Back/orange.svg)' }} />
+
       <HeaderLogo />
 
-      {/* Banner */}
       <BannerCard />
 
-      {/* ประกาศ */}
       <InfoCard
         title="ประกาศ"
         subtitle="ประกาศสำคัญ"
@@ -23,7 +22,6 @@ export default function Home() {
         colorTitle="text-[#FF7A00]"
       />
 
-      {/* คำแนะนำ */}
       <InfoCard
         title="คำแนะนำ"
         subtitle="คำแนะนำเกี่ยวกับการผ่อน"
@@ -33,10 +31,8 @@ export default function Home() {
         colorTitle="text-[#FF7A00]"
       />
 
-      {/* ปุ่มจัดการบัญชีธนาคาร */}
       <BankButton />
 
-      {/* Navbar ด้านล่าง */}
       <MobileNavbar />
     </div>
   );
