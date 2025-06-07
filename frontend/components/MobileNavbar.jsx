@@ -33,7 +33,10 @@ export default function MobileNavbar() {
       zIndex: 1000,
     }}>
       {navItems.map((item) => {
-        const isActive = pathname === item.href;
+        let isActive = pathname === item.href;
+        if (item.href === "/menu" && (pathname.startsWith("/menu") || pathname.startsWith("/financial"))) {
+          isActive = true;
+        }
         return (
           <Link key={item.label} href={item.href} style={{ textDecoration: "none" }}>
             <div style={{
