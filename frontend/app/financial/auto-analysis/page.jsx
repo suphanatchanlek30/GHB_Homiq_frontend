@@ -61,24 +61,7 @@ const AutoAnalysis = () => {
         setLoading(false); // ปิดสถานะ loading
     };
 
-    // ฟังก์ชันสำหรับคำนวณ path ของกราฟ DTI (gauge) ในรูปแบบ SVG
-    // รับค่า DTI แล้วแปลงเป็น path arc (ครึ่งวงกลม) ที่แสดงผลตามค่า DTI
-    const getDtiGaugePath = useCallback((dtiValue) => {
-        if (dtiValue === null) return ""; // ถ้ายังไม่มีค่า DTI ไม่ต้องวาด arc
-        const radius = 70; // รัศมีของครึ่งวงกลม
-        const centerX = 100; // จุดศูนย์กลางแกน X ของ SVG
-        const centerY = 100; // จุดศูนย์กลางแกน Y ของ SVG
-        const maxDtiForFullArc = 100; // กำหนดว่า DTI 100 จะเต็มครึ่งวงกลม
-        // คำนวณมุม (angle) ที่ต้องการวาด arc ตามค่า DTI (0 DTI = 180°, 100 DTI = 0°)
-        const angle = 180 - (dtiValue / maxDtiForFullArc) * 180;
-        // คำนวณจุดสิ้นสุดของ arc ตามมุมที่ได้
-        const x = centerX + radius * Math.cos(angle * Math.PI / 180);
-        const y = centerY - radius * Math.sin(angle * Math.PI / 180);
-        // largeArcFlag ใช้กำหนดทิศทางการวาด arc (0 สำหรับ < 180°, 1 สำหรับ >= 180°)
-        const largeArcFlag = angle <= 90 ? 0 : 1;
-        // คืนค่า path สำหรับ SVG arc
-        return `M30,100 A70,70 0 ${largeArcFlag} 1 ${x},${y}`;
-    }, []);
+
 
     // ฟังก์ชันสำหรับคำนวณตำแหน่งของเข็ม (needle) ในกราฟ DTI
     // รับค่า DTI แล้วแปลงเป็นจุดปลายของเข็มใน SVG
@@ -110,7 +93,7 @@ const AutoAnalysis = () => {
 
                 {/* ส่วนปุ่มเชื่อมต่อบัญชีธนาคาร */}
                 <div className="flex flex-col items-center mb-6">
-                    <img src="/bank-logo-ghb.png" alt="ธนาคารอาคารสงเคราะห์" className="w-24 h-24 object-contain rounded-lg shadow mb-4" />
+                    <img src="/LogoAppicationGHB/Logo.png" alt="ธนาคารอาคารสงเคราะห์" className="w-24 h-24 object-contain rounded-lg shadow mb-4" />
                     <button
                         className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded transition text-lg shadow"
                         onClick={() => alert('Simulating connection to bank... (Not implemented)')}
@@ -145,7 +128,7 @@ const AutoAnalysis = () => {
                         ) : (
                             <>
                                 {/* ไอคอนแสดงภาพตัวอย่างการอัปโหลด */}
-                                <img src="/upload-icon.png" alt="upload icon" className="w-16 h-16 mb-2 opacity-60" />
+                                <img src="/LogoAppicationGHB/icon2.svg" alt="upload icon" className="w-16 h-16 mb-2 opacity-60" />
                                 <div className="flex flex-row items-center justify-center gap-2 mb-1">
                                     <span className="text-orange-500 font-bold text-lg">Click to upload</span>
                                     <span className="text-gray-500 font-semibold text-lg">or drag and drop</span>
