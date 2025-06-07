@@ -83,7 +83,7 @@ const AutoAnalysis = () => {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-orange-100 via-white to-white py-8">
-            <div className="w-full max-w-md flex flex-col items-center bg-white bg-opacity-80 rounded-lg shadow p-8">
+            <div className="w-full max-w-md flex flex-col items-center rounded-lg shadow p-8">
                 {/* ส่วนหัวข้อและคำอธิบาย */}
                 <h2 className="text-2xl md:text-3xl font-bold text-orange-500 text-center mb-4">วิเคราะห์การเงินอัตโนมัติ</h2>
                 <p className="text-lg md:text-xl font-semibold text-orange-400 text-center mb-6">
@@ -93,9 +93,9 @@ const AutoAnalysis = () => {
 
                 {/* ส่วนปุ่มเชื่อมต่อบัญชีธนาคาร */}
                 <div className="flex flex-col items-center mb-6">
-                    <img src="/LogoAppicationGHB/Logo.png" alt="ธนาคารอาคารสงเคราะห์" className="w-24 h-24 object-contain rounded-lg shadow mb-4" />
+                    <img src="/LogoAppicationGHB/Logo.png" alt="ธนาคารอาคารสงเคราะห์" className="w-18 h-18 object-contain rounded-lg shadow mb-4" />
                     <button
-                        className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded transition text-lg shadow"
+                        className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-[2px] transition text-[14px] shadow "
                         onClick={() => alert('Simulating connection to bank... (Not implemented)')}
                     >
                         เชื่อมต่อกับบัญชีธนาคาร
@@ -140,7 +140,7 @@ const AutoAnalysis = () => {
 
                     {/* ปุ่มสำหรับส่งไฟล์ไปวิเคราะห์ (mock API) */}
                     <button
-                        className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded transition text-lg shadow disabled:opacity-60"
+                        className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-[2px] transition text-[14px] shadow disabled:opacity-60"
                         onClick={simulateDtiAnalysis}
                         disabled={!uploadedFile || loading}
                     >
@@ -175,9 +175,16 @@ const AutoAnalysis = () => {
                         {dti !== null ? dti : 'N/A'}
                     </div>
                 </div>
-                <div className="text-gray-700 text-lg font-bold text-center mb-2">
-                    ลดการใช้จ่ายเพื่อปรับ <span className="font-black">DTI</span> ให้เหมาะสมกับรายได้
-                </div>
+                {/* ข้อความแนะนำหรือชื่นชมตามค่า DTI */}
+                {dti !== null && dti < 40 ? (
+                    <div className="text-orange-600 text-lg font-bold text-center mb-2">
+                        ยอดเยี่ยม! สัดส่วน DTI ของคุณอยู่ในเกณฑ์ที่ดีมาก
+                    </div>
+                ) : dti !== null ? (
+                    <div className="text-gray-700 text-lg font-bold text-center mb-2">
+                        ลดการใช้จ่ายเพื่อปรับ <span className="font-black">DTI</span> ให้เหมาะสมกับรายได้
+                    </div>
+                ) : null}
             </div>
         </div>
     );
